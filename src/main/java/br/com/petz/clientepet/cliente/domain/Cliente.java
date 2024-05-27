@@ -34,6 +34,7 @@ public class Cliente {
 	
 	@NotBlank
 	@Email
+	@Column(unique = true)
 	private String email;
 	
 	@NotBlank
@@ -46,6 +47,7 @@ public class Cliente {
 	private LocalDate dataNascimento;
 	
 	@CPF
+	@Column(unique = true)
 	private String cpf;
 	
 	@NotNull
