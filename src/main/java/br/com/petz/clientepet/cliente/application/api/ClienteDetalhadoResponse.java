@@ -8,7 +8,7 @@ import br.com.petz.clientepet.cliente.domain.Sexo;
 import lombok.Value;
 
 @Value
-public class CLienteDetalhadoResponse {
+public class ClienteDetalhadoResponse {
 
 	private UUID idCliente;	
 	private String nomeCompleto;
@@ -20,7 +20,7 @@ public class CLienteDetalhadoResponse {
 	private Boolean aceitaTermos;
 	private Sexo sexo;
 	
-	public CLienteDetalhadoResponse(Cliente cliente) {
+	public ClienteDetalhadoResponse(Cliente cliente) {
 		this.idCliente = cliente.getIdCliente();
 		this.nomeCompleto = cliente.getNomeCompleto();
 		this.email = cliente.getEmail();

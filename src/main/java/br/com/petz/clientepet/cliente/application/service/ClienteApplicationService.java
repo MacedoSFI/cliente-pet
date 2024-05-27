@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import br.com.petz.clientepet.cliente.application.api.CLienteDetalhadoResponse;
+import br.com.petz.clientepet.cliente.application.api.ClienteDetalhadoResponse;
 import br.com.petz.clientepet.cliente.application.api.ClienteListResponse;
 import br.com.petz.clientepet.cliente.application.api.ClienteRequest;
 import br.com.petz.clientepet.cliente.application.api.ClienteResponse;
@@ -41,11 +41,19 @@ public class ClienteApplicationService implements ClienteService {
 	}
 
 	@Override
-	public CLienteDetalhadoResponse buscaClienteAtravesId(UUID idCliente) {
+	public ClienteDetalhadoResponse buscaClienteAtravesId(UUID idCliente) {
 		log.info("[incia] ClienteApplicationService - buscaClienteAtravesId");
 		Cliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);
 		log.info("[finaliza] ClienteApplicationService - buscaClienteAtravesId");
-		return new CLienteDetalhadoResponse(cliente);
+		return new ClienteDetalhadoResponse(cliente);
+	}
+
+	@Override
+	public void deletaClienteAtravesId(UUID idCliente) {
+		log.info("[incia] ClienteApplicationService - deletaClienteAtravesId");
+		Cliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);
+		clienteRepository.deletaCliente(cliente);
+		log.info("[finaliza] ClienteApplicationService - deletaClienteAtravesId");
 	}
 
 }
