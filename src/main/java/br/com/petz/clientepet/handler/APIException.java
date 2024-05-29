@@ -14,13 +14,13 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class APIException extends RuntimeException {
 
-	private static final long serialVersionUID = 1L;
+	
 	private HttpStatus statusException;
 	private ErrorApiResponse bodyException;
 	
 	private APIException(HttpStatus statusException, String message, Exception e) {
 		super(message, e);
-		e.getCause();
+		//	e.getCause();
 		this.statusException = statusException;
 		this.bodyException = ErrorApiResponse.builder()
 				.message(message)
@@ -50,4 +50,5 @@ public class APIException extends RuntimeException {
 				.status(statusException)
 				.body(bodyException);
 	}
+	private static final long serialVersionUID = 1L;
 }
