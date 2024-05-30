@@ -34,18 +34,5 @@ public class ClienteRequest {
 	
 	@NotNull
 	private Boolean aceitaTermos;
-	/**
-	 * 
-	{
-	"nomeCompleto":"Felipe Macedo",
-	"email":"efgfgdfdf@gmail.com",
-	"celular":"22123123123",
-	"telefone":"22456456456",
-	"sexo":"MASCULINO",
-	"dataNascimento":"1984-03-21",
-	"cpf":"12312312311",
-	"aceitaTermos":"true"
-	}
 	
-	 */
 }

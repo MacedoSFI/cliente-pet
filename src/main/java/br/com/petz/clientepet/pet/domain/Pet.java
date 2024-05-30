@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import br.com.petz.clientepet.pet.application.api.PetRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -11,6 +12,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
@@ -22,46 +24,61 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Pet {
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(columnDefinition = "uuid", name = "id", updatable = false, unique = true, nullable = false)
 	private UUID idPet;
+	
+	@NotNull
+	@Column(columnDefinition = "uuid", name = "idClienteTutor", nullable = false)
+	private UUID idClienteTutor;
+	
 	@NotBlank
 	private String nomePet;
-	@Enumerated(EnumType.STRING)
-	private SexoPet sexo;
+	
 	@NotNull
-	private LocalDate dataNascimento;
 	@Enumerated(EnumType.STRING)
 	private Porte porte;
+	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private TipoPet tipo;
+	
 	private String microchip;
+	
 	private String raca;
+	
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private SexoPet sexo;
+	
 	private String pelagemCor;
+	
+	@NotNull
+	private LocalDate dataNascimento;
+	
 	private String rga;
+	
 	private Integer peso;
+	
 	private LocalDateTime dataHoraCadastro;
+	
 	private LocalDateTime dataHoraDaUltimaAlteracao;
-	/*
-	 * public Pet(ClienteRequest clienteRequest) { this.nomeCompleto =
-	 * clienteRequest.getNomeCompleto(); this.email = clienteRequest.getEmail();
-	 * this.celular = clienteRequest.getCelular(); this.telefone =
-	 * clienteRequest.getTelefone(); this.sexo = clienteRequest.getSexo();
-	 * this.dataNascimento = clienteRequest.getDataNascimento(); this.cpf =
-	 * clienteRequest.getCpf(); this.aceitaTermos =
-	 * clienteRequest.getAceitaTermos(); this.dataHoraCadastro =
-	 * LocalDateTime.now(); }
-	 * 
-	 * public void altera(ClienteAlteracaoRequest clienteAlteracaoRequest) {
-	 * this.nomeCompleto = clienteAlteracaoRequest.getNomeCompleto(); this.celular =
-	 * clienteAlteracaoRequest.getCelular(); this.telefone =
-	 * clienteAlteracaoRequest.getTelefone(); this.sexo =
-	 * clienteAlteracaoRequest.getSexo(); this.dataNascimento =
-	 * clienteAlteracaoRequest.getDataNascimento(); this.aceitaTermos =
-	 * clienteAlteracaoRequest.getAceitaTermos(); this.dataHoraDaUltimaAlteracao =
-	 * LocalDateTime.now();
-	 * 
-	 * }
-	 */
+	
+	public Pet(UUID idCliente, @Valid PetRequest petRequest) {
+		this.idClienteTutor = idCliente;
+		this.nomePet = petRequest.getNomePet();
+		this.sexo = petRequest.getSexo();
+		this.dataNascimento = petRequest.getDataNascimento();
+		this.porte = petRequest.getPorte();
+		this.tipo = petRequest.getTipo();
+		this.microchip = petRequest.getMicrochip();
+		this.raca = petRequest.getRaca();
+		this.pelagemCor = petRequest.getPelagemCor();
+		this.rga = petRequest.getRga();
+		this.peso = petRequest.getPeso();
+		this.dataHoraCadastro = LocalDateTime.now();
+	}
+	
 }
