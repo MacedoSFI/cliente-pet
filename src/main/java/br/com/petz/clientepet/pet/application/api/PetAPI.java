@@ -25,6 +25,11 @@ public interface PetAPI {
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	List<PetClienteListResponse> getPetsDoClienteComId(@PathVariable UUID idCliente);
+
+	@GetMapping(value = "/{idPet}")
+	@ResponseStatus(code = HttpStatus.OK)
+	PetClienteDetalhadoResponse getPetDoClienteComId(@PathVariable UUID idCliente, @PathVariable UUID idPet);
+	
 	/*
 	 * 
 @RestController
@@ -32,10 +37,6 @@ public interface PetAPI {
 public interface ClienteAPI {
 
 
-	@GetMapping(value = "/{idCliente}")
-	@ResponseStatus(code = HttpStatus.OK)
-	ClienteDetalhadoResponse getClienteAtravesId(@PathVariable UUID idCliente);
-	
 	@DeleteMapping(value = "/{idCliente}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	void deletaClienteAtravesId(@PathVariable UUID idCliente);
