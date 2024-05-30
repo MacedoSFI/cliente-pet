@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,22 +35,10 @@ public interface PetAPI {
 	@DeleteMapping(value = "/{idPet}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	void deletaPetDoClientecomId(@PathVariable UUID idCliente, @PathVariable UUID idPet);
-	
-	/*
-	 * 
-@RestController
-@RequestMapping("/v1/cliente")
-public interface ClienteAPI {
 
-
-	
-	
-	@PatchMapping(value = "/{idCliente}")
+	@PatchMapping(value = "/{idPet}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	void patchAlteraCliente(@PathVariable UUID idCliente, @Valid @RequestBody ClienteAlteracaoRequest clienteAlteracaoRequest);
+	void patchAlteraPet(@PathVariable UUID idCliente, @PathVariable UUID idPet, 
+			@Valid @RequestBody PetAlteracaoRequest petAlteracaoRequest);
 	
-}
-
-	 */
-
 }
