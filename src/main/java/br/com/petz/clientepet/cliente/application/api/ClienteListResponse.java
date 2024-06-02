@@ -15,15 +15,11 @@ public class ClienteListResponse {
 	private String cpf;
 	private String celular;
 	
-	
-	
 	public static List<ClienteListResponse> converte(List<Cliente> clientes) {
 		return clientes.stream()
 				.map(ClienteListResponse::new)
 				.collect(Collectors.toList());
 	}
-
-
 
 	public ClienteListResponse(Cliente cliente) {
 		this.idCliente = cliente.getIdCliente();

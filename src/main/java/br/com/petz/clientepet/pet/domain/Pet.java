@@ -41,7 +41,6 @@ public class Pet {
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Porte porte;
-	
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private TipoPet tipo;
@@ -72,7 +71,7 @@ public class Pet {
 		this.nomePet = petRequest.getNomePet();
 		this.sexo = petRequest.getSexo();
 		this.dataNascimento = petRequest.getDataNascimento();
-		this.porte = petRequest.getPorte();
+		//this.porte = petRequest.getPorte();
 		this.tipo = petRequest.getTipo();
 		this.microchip = petRequest.getMicrochip();
 		this.raca = petRequest.getRaca();
@@ -86,7 +85,7 @@ public class Pet {
 		this.nomePet = petRequest.getNomePet();
 		this.sexo = petRequest.getSexo();
 		this.dataNascimento = petRequest.getDataNascimento();
-		this.porte = petRequest.getPorte();
+		//this.porte = petRequest.getPorte();
 		this.tipo = petRequest.getTipo();
 		this.microchip = petRequest.getMicrochip();
 		this.raca = petRequest.getRaca();
